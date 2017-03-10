@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Index Pages</title>
+    </head>
+    <body>
+        <table></table>
+        <table border='2px'>
+            <tr>
+                <td>
+                    Users count
+                </td>
+                <td>
+                    {{user_count}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Total keys count
+                </td>
+                <td>
+                    {{key_count}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Histogram
+                </td>
+                <td>
+                    {% for key, count in key_hist.items %}
+                        <p>
+                            {{key}} - {{count}}
+                        </p>
+                    {% endfor %}
+                </td>
+            </tr>
+
+        </table>
+        <table border='2px'>
+            <tr>
+                <td>
+                    User
+                </td>
+                <td>
+                    Created at
+                </td>
+            </tr>
+            {% for user in users %}
+                <tr>
+                    <td>
+                        <a href="{% url 'storage:user_detail' user_id=user.id_str %} ">{{user.id}}</a>
+                    </td>
+                    <td>
+                        {{user.created_at}}
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </body>
+</html>
