@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Index Page
+{% endblock %}
+
+{% block  body %}
+    <table border='2px'>
+        {% for  blog in blogs %}
+        <tr>
+            <td>
+                <a href="{% url 'website:detail_post' blog_id=blog.id %}">{{blog.title}}</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
